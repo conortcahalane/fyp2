@@ -1,7 +1,15 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import Counters from "./components/counters";
+// import {
+//   Router,
+//   Route,
+//   Link,
+//   IndexRoute,
+//   hashHistory,
+//   browserHistory
+// } from "react-router";
 import NavBar from "./components/navbar";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 
 class App extends Component {
@@ -57,8 +65,9 @@ class App extends Component {
       //need to add react.fragment because i am returning multiple route elements
       <React.Fragment>
         <NavBar
-          //totals the counters with states greater than zero
-          totalCounters={this.state.counters.filter(c => c.value > 0).lenght}
+        //totals the counters with states greater than zero
+        // totalCounters={this.state.counters.filter(c => c.value > 0).lenght}
+        //counters={this.state.counters}
         />
         <main className="container">
           <Counters
@@ -68,6 +77,11 @@ class App extends Component {
             onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
           />
+          <div className="button-container" align="center" cellpadding="50px">
+            <button className="btn btn-primary btn-lg">Add Section</button>
+            <button className="btn btn-success btn-lg">Save Newsletter</button>
+            <button className="btn btn-warning btn-lg">Send</button>
+          </div>
         </main>
       </React.Fragment>
     );
