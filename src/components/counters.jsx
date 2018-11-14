@@ -22,7 +22,7 @@ class Counters extends Component {
             //holds all the contents of counter
             counter={counter}
           >
-            <h4>News Item #{counter.id}</h4>
+            <h4>News Section {counter.id}</h4>
           </Counter>
         ))}
       </div>

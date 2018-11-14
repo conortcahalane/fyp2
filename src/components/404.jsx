@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import {
-  Router,
-  Route,
-  Link,
-  IndexRoute,
-  hashHistory,
-  browserHistory
-} from "react-router";
+import React from "react";
 
-const NotFound = () => <h1>404.. This page is not found!</h1>;
+const NotFound = () => {
+  return (
+    <div>
+      <p>Error: Page does not exist.</p>
+    </div>
+  );
+};
+
+export default NotFound;
