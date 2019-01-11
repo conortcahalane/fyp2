@@ -9,6 +9,9 @@ const NavBar = () => {
     <div>
       <ul>
         <li>
+          {/* <img src={require("./src/resources/IconSingleBlue.png")} /> */}
+        </li>
+        <li>
           <NavLink to="/home">Home</NavLink>
         </li>
         <li>
@@ -22,12 +25,6 @@ const NavBar = () => {
         </li>
       </ul>
     </div>
-    // <div>
-    //   <NavLink to="/home">Home</NavLink>
-    //   <NavLink to="/about">About Us</NavLink>
-    //   <NavLink to="/instructions">Instructions</NavLink>
-    //   <NavLink to="/newsletter">Create Newsletter</NavLink>
-    // </div>
   );
 };
 
