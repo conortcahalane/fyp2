@@ -70,7 +70,7 @@ class Newsletter extends Component {
             onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
           />
-          <div className="button-container" align="center" cellpadding="50px">
+          <div className="button-container" align="center" cellPadding="50px">
             <button className="btn btn-primary btn-sm">Add Section</button>
             <button className="btn btn-success btn-sm">Save Newsletter</button>
             <button className="btn btn-warning btn-sm">Send</button>
