@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withAuthorization } from "./Session";
 import Counters from "./counters";
 // import {
 //   Router,
@@ -80,5 +81,6 @@ class Newsletter extends Component {
     );
   }
 }
+const condition = authUser => !!authUser;
 
-export default Newsletter;
+export default withAuthorization(condition)(Newsletter);
