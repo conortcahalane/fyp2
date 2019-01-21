@@ -6,7 +6,6 @@ import "./App.css";
 import Home from "./components/home";
 import NotFound from "./components/404";
 import About from "./components/about";
-import User from "./components/user";
 import Instructions from "./components/instructions";
 import Newsletter from "./components/newsletter";
 import Landing from "./components/landing";
@@ -16,6 +15,9 @@ import * as ROUTES from "./constants/routes";
 import { withAuthentication } from "./components/Session";
 import PasswordForgetPage from "./components/passwordforget";
 import AccountPage from "./components/Account";
+import AdminPage from "./components/Admin";
+
+//import "./App.css";
 
 const App = () => (
   <React.Fragment>
@@ -30,9 +32,9 @@ const App = () => (
           <Route path={ROUTES.INSTRUCTIONS} component={Instructions} />
           <Route path={ROUTES.HOME} component={Home} />
           <Route path={ROUTES.NEWSLETTER} component={Newsletter} />
-          <Route path={ROUTES.USER} component={User} />
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+          <Route path={ROUTES.ADMIN} component={AdminPage} />
           <Route component={NotFound} />
         </Switch>
       </div>

@@ -19,7 +19,7 @@ const NavBarAuth = () => (
       <Link to={ROUTES.HOME}>Home</Link>
     </li>
     <li>
-      <Link to={ROUTES.ABOUT}>ABOUT</Link>
+      <Link to={ROUTES.ABOUT}>About</Link>
     </li>
     <li>
       <Link to={ROUTES.INSTRUCTIONS}>Instructions</Link>
@@ -29,6 +29,9 @@ const NavBarAuth = () => (
     </li>
     <li>
       <Link to={ROUTES.ACCOUNT}>Account</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.ADMIN}>Admin</Link>
     </li>
     <li>
       <SignOutButton />
