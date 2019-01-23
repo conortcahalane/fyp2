@@ -1,10 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "./signout";
-import "./../App.css";
+//import "./../App.css";
 import * as ROUTES from "../constants/routes";
 import { AuthUserContext } from "./Session";
+import styled, { css } from "styled-components";
 
+const NavStyle = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+
+  ${props =>
+    props.primary &&
+    css`
+      background: palevioletred;
+      color: white;
+    `};
+`;
 const NavBar = () => (
   <div>
     <AuthUserContext.Consumer>
@@ -14,7 +30,7 @@ const NavBar = () => (
 );
 
 const NavBarAuth = () => (
-  <ul>
+  <div className="nav-ul">
     <li>
       <Link to={ROUTES.HOME}>Home</Link>
     </li>
@@ -36,18 +52,18 @@ const NavBarAuth = () => (
     <li>
       <SignOutButton />
     </li>
-  </ul>
+  </div>
 );
 
 const NavBarNonAuth = () => (
-  <ul>
+  <div className="nav-ul">
     <li>
       <Link to={ROUTES.LANDING}>Landing</Link>
     </li>
     <li>
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
     </li>
-  </ul>
+  </div>
 );
 //this is a stateless functional component, simple functionality
 // const NavBar = () => {

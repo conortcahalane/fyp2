@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #2054bb;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,15 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: rgb(39, 174, 228);
+  background-color: #db7093;
+}
+
+.nav-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #db7093;
 }
 
 li {
