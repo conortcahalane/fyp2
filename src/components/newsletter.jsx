@@ -10,6 +10,63 @@ import Counters from "./counters";
 //   browserHistory
 // } from "react-router";
 import NavBar from "./navbar";
+import styled from "styled-components";
+
+// Create a Title component that'll render an <h1> tag with some styles
+const Title = styled.h1`
+  font-size: 3em;
+  text-align: center;
+  color: #af5a76;
+`;
+const Header = styled.h1`
+  font-size: 1.25em;
+  text-align: center;
+  color: #017cff;
+`;
+const Text = styled.h3`
+  font-size: 1em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+const FooterText = styled.h3`
+  font-size: 0.75em;
+  text-align: center;
+  color: papayawhip;
+`;
+
+// Creates a Wrapper component that'll render a <section> tag with some styles
+const Wrapper = styled.section`
+  padding: 3em;
+  background: papayawhip;
+`;
+
+const InsideWrapper = styled.section`
+  padding: 1em;
+  text-align: center;
+  background: papayawhip;
+`;
+const PicWrapper = styled.section`
+  padding: 0.5em;
+  text-align: center;
+`;
+
+const Button = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${props => (props.primary ? "palevioletred" : "white")};
+  color: ${props => (props.primary ? "white" : "palevioletred")};
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 1.5px solid palevioletred;
+  border-radius: 3px;
+`;
+const Footer = styled.section`
+  padding: 2.5em;
+  text-align: center;
+  background: palevioletred;
+`;
 
 class Newsletter extends Component {
   state = {
@@ -63,20 +120,29 @@ class Newsletter extends Component {
     return (
       //need to add react.fragment because i am returning multiple route elements
       <React.Fragment>
-        <main className="container">
-          <Counters
-            //properties of the prop object, can be called in child classes
-            counters={this.state.counters}
-            onReset={this.handleReset}
-            onIncrement={this.handleIncrement}
-            onDelete={this.handleDelete}
-          />
-          <div className="button-container" align="center" cellPadding="50px">
-            <button className="btn btn-primary btn-sm">Add Section</button>
-            <button className="btn btn-success btn-sm">Save Newsletter</button>
-            <button className="btn btn-warning btn-sm">Send</button>
-          </div>
-        </main>
+        <Wrapper>
+          <main className="container">
+            <Counters
+              //properties of the prop object, can be called in child classes
+              counters={this.state.counters}
+              onReset={this.handleReset}
+              onIncrement={this.handleIncrement}
+              onDelete={this.handleDelete}
+            />
+            <div className="button-container" align="center" cellPadding="50px">
+              <Button className="btn btn-primary btn-sm">Add Section</Button>
+              <Button className="btn btn-success btn-sm">
+                Save Newsletter
+              </Button>
+              <Button className="btn btn-warning btn-sm">Send</Button>
+            </div>
+          </main>
+        </Wrapper>
+        <Footer>
+          <FooterText>
+            Developed by Conor Cahalane using React and Firebase
+          </FooterText>
+        </Footer>
       </React.Fragment>
     );
   }

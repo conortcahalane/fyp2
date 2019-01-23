@@ -6,20 +6,20 @@ import * as ROUTES from "../constants/routes";
 import { AuthUserContext } from "./Session";
 import styled, { css } from "styled-components";
 
-const NavStyle = styled.button`
-  background: transparent;
+const NavLink = styled(Link)`
+  background: palevioletred;
   border-radius: 3px;
   border: 2px solid palevioletred;
-  color: palevioletred;
+  color: white;
   margin: 0 1em;
-  padding: 0.25em 1em;
-
-  ${props =>
-    props.primary &&
-    css`
-      background: palevioletred;
-      color: white;
-    `};
+  :hover {
+    color: palevioletred;
+    background: white;
+  }
+`;
+const PicWrapper = styled.section`
+  padding: 0.5em;
+  text-align: right;
 `;
 const NavBar = () => (
   <div>
@@ -32,22 +32,32 @@ const NavBar = () => (
 const NavBarAuth = () => (
   <div className="nav-ul">
     <li>
-      <Link to={ROUTES.HOME}>Home</Link>
+      <PicWrapper>
+        <img
+          src={require("../resources/IconSinglePaleL.png")}
+          alt="Logo"
+          height="42"
+          width="42"
+        />
+      </PicWrapper>
     </li>
     <li>
-      <Link to={ROUTES.ABOUT}>About</Link>
+      <NavLink to={ROUTES.HOME}>Home</NavLink>
     </li>
     <li>
-      <Link to={ROUTES.INSTRUCTIONS}>Instructions</Link>
+      <NavLink to={ROUTES.ABOUT}>About</NavLink>
     </li>
     <li>
-      <Link to={ROUTES.NEWSLETTER}>Create Newsletter</Link>
+      <NavLink to={ROUTES.INSTRUCTIONS}>Instructions</NavLink>
     </li>
     <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
+      <NavLink to={ROUTES.NEWSLETTER}>Create Newsletter</NavLink>
     </li>
     <li>
-      <Link to={ROUTES.ADMIN}>Admin</Link>
+      <NavLink to={ROUTES.ACCOUNT}>Account</NavLink>
+    </li>
+    <li>
+      <NavLink to={ROUTES.ADMIN}>Admin</NavLink>
     </li>
     <li>
       <SignOutButton />
@@ -58,43 +68,23 @@ const NavBarAuth = () => (
 const NavBarNonAuth = () => (
   <div className="nav-ul">
     <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
+      <PicWrapper>
+        <img
+          src={require("../resources/IconSinglePaleL.png")}
+          alt="Logo"
+          height="42"
+          width="42"
+        />
+      </PicWrapper>
     </li>
     <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+      <NavLink to={ROUTES.LANDING}>Landing</NavLink>
+    </li>
+    <li>
+      <NavLink to={ROUTES.SIGN_IN}>Sign In</NavLink>
     </li>
   </div>
 );
-//this is a stateless functional component, simple functionality
-// const NavBar = () => {
-//   return (
-//     <div>
-//       <ul>
-//         <li>
-//           {/* <img src={require("./src/resources/IconSingleBlue.png")} /> */}
-//         </li>
-//         <li>
-//           <NavLink to={ROUTES.HOME}>Home</NavLink>
-//         </li>
-//         <li>
-//           <NavLink to={ROUTES.ABOUT}>About Us</NavLink>
-//         </li>
-//         <li>
-//           <NavLink to={ROUTES.INSTRUCTIONS}>Instructions</NavLink>
-//         </li>
-//         <li>
-//           <NavLink to={ROUTES.NEWSLETTER}>Create Newsletter</NavLink>
-//         </li>
-//         <li>
-//           <SignOutButton />
-//         </li>
-//         {/* <li>
-//           <NavLink to={ROUTES.USER}>User</NavLink>
-//         </li> */}
-//       </ul>
-//     </div>
-//   );
-// };
 
 //totals the counters with states greater than zero
 // totalCounters={this.state.counters.filter(c => c.value > 0).lenght}
