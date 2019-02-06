@@ -7,7 +7,7 @@ import Home from "./components/home";
 import NotFound from "./components/404";
 import About from "./components/about";
 import Instructions from "./components/instructions";
-import Newsletter from "./components/newsletter";
+import Newsletter from "./components/Newsletter/newsletter";
 import Landing from "./components/landing";
 import Signin from "./components/signin";
 import Signup from "./components/signup";

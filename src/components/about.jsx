@@ -53,8 +53,6 @@ const About = () => {
         <Title>About Up2Date</Title>
         <InsideWrapper>
           <Text>Developed with such technologies as</Text>
-          <InsideWrapper />
-
           <PicWrapper>
             <img
               src={require("../resources/about/node.png")}
