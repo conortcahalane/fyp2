@@ -1,4 +1,35 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+
+// Create a Title component that'll render an <h1> tag with some styles
+const NewsTitle = styled.h1`
+  font-size: 3em;
+  text-align: center;
+  color: #af5a76;
+`;
+
+const NewsText = styled.h3`
+  font-size: 1em;
+  text-align: left;
+  color: palevioletred;
+`;
+const Text = styled.h1`
+  font-size: 1.75em;
+  text-align: left;
+  color: #af5a76;
+`;
+
+const RedButton = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${props => (props.primary ? "#ff4c4c" : "white")};
+  color: ${props => (props.primary ? "white" : "#ff4c4c")};
+
+  font-size: 1em;
+  margin: 0.5em;
+  padding: 0.25em 1em;
+  border: 1.7px solid #ff4c4c;
+  border-radius: 3px;
+`;
 
 class Counter extends Component {
   // testing logs
@@ -10,38 +41,45 @@ class Counter extends Component {
       //database call that would get new data from the server
     }
   }
-  //   constructor() {
-  //     super();
-  //     this.handleIncrement.bind(this);
-  //   }
 
   render() {
     console.log("Counter - Rendered");
     return (
       <div>
-        {this.props.children}
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button
-          onClick={() => this.props.onIncrement(this.props.counter)}
-          className="btn btn-secondary btn-sm"
-        >
-          +
-        </button>
-        <button
-          onClick={() => this.props.onDecrement(this.props.counter)}
-          className="btn btn-secondary btn-sm"
-        >
-          -
-        </button>
         <div>
-          <textarea cols="40" rows="2" input="" value="" />
+          <Text>News Item {this.props.counter.id}</Text>
         </div>
-        <button
-          onClick={() => this.props.onDelete(this.props.counter.id)}
-          className="btn btn-danger btn-sm m-2"
-        >
-          Delete
-        </button>
+        {/* <div className="col-1">
+          {this.props.children}
+          <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        </div> */}
+        <div className="col">
+          {/* <button
+            onClick={() => this.props.onIncrement(this.props.counter)}
+            className="btn btn-secondary btn-sm"
+          >
+            +
+          </button>
+          <button
+            onClick={() => this.props.onDecrement(this.props.counter)}
+            className="btn btn-secondary btn-sm m-2"
+            disabled={this.props.counter.value === 0 ? "disabled" : ""}
+          >
+            -
+          </button> */}
+          <div>
+            <NewsText>Header:</NewsText>
+            <input input="" value="" />
+          </div>
+
+          <div>
+            <NewsText>Body:</NewsText>
+            <textarea cols="40" rows="2" input="" value="" />
+          </div>
+          <RedButton onClick={() => this.props.onDelete(this.props.counter.id)}>
+            Delete
+          </RedButton>
+        </div>
       </div>
     );
   }

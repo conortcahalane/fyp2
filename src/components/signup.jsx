@@ -12,18 +12,6 @@ const Title = styled.h1`
   color: #af5a76;
 `;
 
-const Text = styled.h3`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
-
-const FooterText = styled.h3`
-  font-size: 0.75em;
-  text-align: center;
-  color: papayawhip;
-`;
-
 // Creates a Wrapper component that'll render a <section> tag with some styles
 const Wrapper = styled.section`
   padding: 2.5em;

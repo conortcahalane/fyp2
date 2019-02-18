@@ -9,12 +9,6 @@ const Title = styled.h1`
   color: #af5a76;
 `;
 
-const Text = styled.h3`
-  font-size: 2em;
-  text-align: left;
-  color: palevioletred;
-`;
-
 class Counters extends Component {
   render() {
     //confirmation
@@ -44,9 +38,7 @@ class Counters extends Component {
             onDecrement={onDecrement}
             //holds all the contents of counter
             counter={counter}
-          >
-            <Text>News Section {counter.id}</Text>
-          </Counter>
+          />
         ))}
       </div>
     );
