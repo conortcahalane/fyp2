@@ -54,6 +54,9 @@ const NavBarAuth = () => (
       <NavLink to={ROUTES.NEWSLETTER}>Create Newsletter</NavLink>
     </li>
     <li>
+      <NavLink to={ROUTES.CREATOR}>Create Newsletter</NavLink>
+    </li>
+    <li>
       <NavLink to={ROUTES.ACCOUNT}>Account</NavLink>
     </li>
     <li>

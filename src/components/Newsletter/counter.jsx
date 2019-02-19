@@ -70,9 +70,7 @@ class Counter extends Component {
           <div>
             <NewsText>Header:</NewsText>
             <input input="" value="" />
-          </div>
 
-          <div>
             <NewsText>Body:</NewsText>
             <textarea cols="40" rows="2" input="" value="" />
           </div>

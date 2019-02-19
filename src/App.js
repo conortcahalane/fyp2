@@ -16,6 +16,7 @@ import { withAuthentication } from "./components/Session";
 import PasswordForgetPage from "./components/passwordforget";
 import AccountPage from "./components/Account";
 import AdminPage from "./components/Admin";
+import Creator from "./components/Newsletter/creator";
 
 //import "./App.css";
 
@@ -32,6 +33,7 @@ const App = () => (
           <Route path={ROUTES.INSTRUCTIONS} component={Instructions} />
           <Route path={ROUTES.HOME} component={Home} />
           <Route path={ROUTES.NEWSLETTER} component={Newsletter} />
+          <Route path={ROUTES.CREATOR} component={Creator} />
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />

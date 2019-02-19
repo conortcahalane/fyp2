@@ -3,11 +3,6 @@ import Counter from "./counter";
 import styled from "styled-components";
 
 // Create a Title component that'll render an <h1> tag with some styles
-const Title = styled.h1`
-  font-size: 3em;
-  text-align: center;
-  color: #af5a76;
-`;
 
 class Counters extends Component {
   render() {
@@ -23,8 +18,6 @@ class Counters extends Component {
     } = this.props;
     return (
       <div>
-        <Title>Newsletter Creator</Title>
-        <br />
         <button onClick={onReset} className="btn btn-primary btn-sm m-2">
           Reset
         </button>
