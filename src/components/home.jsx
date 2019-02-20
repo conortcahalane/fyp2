@@ -14,7 +14,12 @@ const Text = styled.h3`
   text-align: center;
   color: palevioletred;
 `;
-
+const SmallText = styled.h3`
+  font-size: 1em;
+  text-align: center;
+  color: palevioletred;
+  padding-top: 3em;
+`;
 const FooterText = styled.h3`
   font-size: 0.75em;
   text-align: center;
@@ -75,6 +80,12 @@ const Home = () => {
             width="122"
           />
         </InsideWrapper>
+        <SmallText>
+          <b>
+            Create quick, dynamic and concise newsletters on the fly and be able
+            to keep everyone Up 2 Date!
+          </b>
+        </SmallText>
       </Wrapper>
       <Footer>
         <FooterText>
