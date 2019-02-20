@@ -20,17 +20,12 @@ const Wrapper = styled.section`
   background: papayawhip;
 `;
 
-const Button = styled.button`
-  /* Adapt the colors based on primary prop */
-  background: ${props => (props.primary ? "#699864" : "white")};
-  color: ${props => (props.primary ? "white" : "#699864	")};
-
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 1.5px solid #699864;
-  border-radius: 3px;
+const CenterDiv = styled.div`
+  padding-top: 1em;
+  text-align: center;
+  background: papayawhip;
 `;
+
 // Create a Title component that'll render an <h1> tag with some styles
 const NewsTitle = styled.h1`
   font-size: 3em;
@@ -55,7 +50,39 @@ const Heading2 = styled.label`
   color: palevioletred;
   padding: 0.5em;
 `;
+const GreenButton = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${props => (props.primary ? "#699864" : "white")};
+  color: ${props => (props.primary ? "white" : "#699864	")};
 
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 1.5px solid #699864;
+  border-radius: 3px;
+`;
+const BlueButton = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${props => (props.primary ? "#027AF9" : "white")};
+  color: ${props => (props.primary ? "white" : "#027AF9	")};
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 1.5px solid #027af9;
+  border-radius: 3px;
+`;
+const YellowButton = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${props => (props.primary ? "#F9C802" : "white")};
+  color: ${props => (props.primary ? "white" : "#F9C802	")};
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 1.5px solid #f9c802;
+  border-radius: 3px;
+`;
 const RedButton = styled.button`
   /* Adapt the colors based on primary prop */
   background: ${props => (props.primary ? "#ff4c4c" : "white")};
@@ -78,9 +105,37 @@ class Creator extends React.Component {
   state = {
     news: [{ heading: "", body: "", link: "" }],
     name: "",
-    description: ""
+    description: "",
+    email: ""
   };
   handleChange = e => {
+    // if (["name"].includes(e.target.className)) {
+    //   let name = [...this.state.name];
+    //   name[e.target.name][e.target.className] = e.target.value;
+    //   this.setState({ name }, () => console.log(this.state.name));
+    // } else {
+    //   this.setState({ [e.target.heading]: e.target.value });
+    // }
+    // if (["description"].includes(e.target.className)) {
+    //   let description = [...this.state.description];
+    //   description[e.target.description][e.target.className] = e.target.value;
+    //   this.setState({ description }, () => console.log(this.state.description));
+    // } else {
+    //   this.setState({ [e.target.heading]: e.target.value });
+    // }
+    if (["name"].includes(e.target.className)) {
+      let name = [...this.state.name];
+      name[e.target.name] = e.target.value;
+      this.setState({ name }, () => console.log(this.state.name));
+    }
+    // let description = [...this.state.description];
+    // description[e.target.description] = e.target.value;
+    // this.setState({ description }, () => console.log(this.state.description));
+
+    // let email = [...this.state.email];
+    // email[e.target.email] = e.target.value;
+    // this.setState({ email }, () => console.log(this.state.email));
+
     if (["heading", "body", "Link"].includes(e.target.className)) {
       let news = [...this.state.news];
       news[e.target.dataset.id][e.target.className] = e.target.value;
@@ -106,17 +161,17 @@ class Creator extends React.Component {
   };
 
   render() {
-    let { name, description, news } = this.state;
+    let { name, description, news, email } = this.state;
     return (
       <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
         <Wrapper>
           <NewsTitle>Newsletter Creator</NewsTitle>
           <br />
-          <div>
-            <Heading htmlFor="heading">Newsletter Title:</Heading>
+          <CenterDiv>
+            <Heading htmlFor="name">Newsletter Title:</Heading>
             <input type="text" heading="name" id="name" value={name} />
-          </div>
-          <div>
+          </CenterDiv>
+          <CenterDiv>
             <Heading2 htmlFor="description">Description</Heading2>
             <input
               type="text"
@@ -124,8 +179,8 @@ class Creator extends React.Component {
               id="description"
               value={description}
             />
-          </div>
-          <Button onClick={this.addNewsItem}>Add News Item</Button>
+          </CenterDiv>
+          <GreenButton onClick={this.addNewsItem}>Add News Item</GreenButton>
           {news.map((val, idx) => {
             let headingId = `heading-${idx}`,
               bodyId = `body-${idx}`,
@@ -146,7 +201,10 @@ class Creator extends React.Component {
                   className="heading"
                 />
                 <Heading2 htmlFor={bodyId}>Body:</Heading2>
-                <input
+
+                <textarea
+                  cols="40"
+                  rows="2"
                   type="text"
                   name={bodyId}
                   data-id={idx}
@@ -154,7 +212,9 @@ class Creator extends React.Component {
                   value={news[idx].body}
                   className="body"
                 />
+
                 <Heading2 htmlFor={linkId}>Link:</Heading2>
+
                 <input
                   type="text"
                   name={linkId}
@@ -163,13 +223,26 @@ class Creator extends React.Component {
                   value={news[idx].link}
                   className="link"
                 />
+
                 <RedButton onClick={this.removeClick.bind(this, idx)}>
                   Delete Item
                 </RedButton>
               </div>
             );
           })}
-          <input type="submit" value="Submit" />
+          <CenterDiv>
+            <Heading2 htmlFor="email">Enter your Email Address</Heading2>
+            <input type="text" heading="email" id="email" value={email} />
+          </CenterDiv>
+          <CenterDiv>
+            <GreenButton onClick={this.addNewsItem}>Add News Item</GreenButton>
+            <BlueButton type="submit" value="Submit">
+              Save Newsletter
+            </BlueButton>
+            <YellowButton type="send" value="Send">
+              Send
+            </YellowButton>
+          </CenterDiv>
         </Wrapper>
         <Footer>
           <FooterText>
