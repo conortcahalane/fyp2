@@ -1,3 +1,8 @@
+//Websites used in the creation of this code
+//https://reactjs.org/docs --> in reference to the javascript library
+//https://firebase.google.com/docs  --> in reference to the database code
+//https://www.styled-components.com/docs --> in reference to the styling of the application
+
 import React from "react";
 import styled from "styled-components";
 
@@ -49,6 +54,17 @@ const Heading2 = styled.label`
   text-align: left;
   color: palevioletred;
   padding: 0.5em;
+`;
+const PinkButton = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${props => (props.primary ? "palevioletred" : "white")};
+  color: ${props => (props.primary ? "white" : "palevioletred")};
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 1.5px solid palevioletred;
+  border-radius: 3px;
 `;
 const GreenButton = styled.button`
   /* Adapt the colors based on primary prop */
@@ -109,28 +125,11 @@ class Creator extends React.Component {
     email: ""
   };
   handleChange = e => {
-    // if (["name"].includes(e.target.className)) {
-    //   let name = [...this.state.name];
-    //   name[e.target.name][e.target.className] = e.target.value;
-    //   this.setState({ name }, () => console.log(this.state.name));
-    // } else {
-    //   this.setState({ [e.target.heading]: e.target.value });
-    // }
-    // if (["description"].includes(e.target.className)) {
-    //   let description = [...this.state.description];
-    //   description[e.target.description][e.target.className] = e.target.value;
-    //   this.setState({ description }, () => console.log(this.state.description));
-    // } else {
-    //   this.setState({ [e.target.heading]: e.target.value });
-    // }
     if (["name"].includes(e.target.className)) {
       let name = [...this.state.name];
       name[e.target.name] = e.target.value;
       this.setState({ name }, () => console.log(this.state.name));
     }
-    // let description = [...this.state.description];
-    // description[e.target.description] = e.target.value;
-    // this.setState({ description }, () => console.log(this.state.description));
 
     // let email = [...this.state.email];
     // email[e.target.email] = e.target.value;

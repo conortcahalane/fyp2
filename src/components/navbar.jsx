@@ -1,3 +1,9 @@
+//Websites used in the creation of this code
+//https://reactjs.org/docs --> in reference to the javascript library
+//https://firebase.google.com/docs  --> in reference to the database code
+//https://www.styled-components.com/docs --> in reference to the styling of the application
+//https://www.npmjs.com/package/react-router-dom --> used for routing throughout the application
+
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "./signout";
@@ -41,6 +47,9 @@ const NavBarAuth = () => (
         />
       </PicWrapper>
     </li>
+
+    {/* Enables routing to different pages of the application, Each is a button on the navbar */}
+
     <li>
       <NavLink to={ROUTES.HOME}>Home</NavLink>
     </li>
@@ -85,14 +94,5 @@ const NavBarNonAuth = () => (
     </li>
   </div>
 );
-
-//totals the counters with states greater than zero
-// totalCounters={this.state.counters.filter(c => c.value > 0).lenght}
-//counters={this.state.counters}
-
-//code that counts the amount of active counters
-/* <span className="badge badge-pill badge-secondary">
-            {this.props.counters.filter(c => c.value > 0).lenght}
-          </span> */
 
 export default NavBar;

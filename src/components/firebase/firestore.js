@@ -1,3 +1,8 @@
+//Websites used in the creation of this code
+//https://reactjs.org/docs --> in reference to the javascript library
+//https://firebase.google.com/docs  --> in reference to the database code
+//https://www.styled-components.com/docs --> in reference to the styling of the application
+
 import app from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
@@ -17,7 +22,7 @@ class Firebase {
     this.auth = app.auth();
     this.db = app.database();
   }
-  // *** Auth API ***
+  //  Auth API 
 
   doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
@@ -31,8 +36,9 @@ class Firebase {
 
   doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
-  // *** User API ***
+  //  User API 
 
+//ref() refers to the location where the data will be stored in Firebase’s realtime database API.
   user = uid => this.db.ref(`users/${uid}`);
 
   users = () => this.db.ref("users");

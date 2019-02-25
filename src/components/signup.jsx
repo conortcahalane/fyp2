@@ -1,3 +1,9 @@
+//Websites used in the creation of this code
+//https://reactjs.org/docs --> in reference to the javascript library
+//https://firebase.google.com/docs  --> in reference to the database code
+//https://www.styled-components.com/docs --> in reference to the styling of the application
+//https://www.npmjs.com/package/react-router-dom --> used for routing throughout the application
+
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { compose } from "recompose";
@@ -101,6 +107,7 @@ class SignUpFormBase extends Component {
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
+        //history refers to the relevant property from the router props, allows the user to be redirected
         this.props.history.push(ROUTES.HOME);
       })
       .catch(error => {

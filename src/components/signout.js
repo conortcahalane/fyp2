@@ -1,3 +1,9 @@
+//Websites used in the creation of this code
+//https://reactjs.org/docs --> in reference to the javascript library
+//https://firebase.google.com/docs  --> in reference to the database code
+//https://www.styled-components.com/docs --> in reference to the styling of the application
+//https://www.npmjs.com/package/react-router-dom --> used for routing throughout the application
+
 import React from "react";
 import { withFirebase } from "./firebase";
 import styled from "styled-components";

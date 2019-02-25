@@ -1,3 +1,8 @@
+//Websites used in the creation of this code
+//https://reactjs.org/docs --> in reference to the javascript library
+//https://firebase.google.com/docs  --> in reference to the database code
+//https://www.styled-components.com/docs --> in reference to the styling of the application
+
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
@@ -21,6 +26,7 @@ const withAuthorization = condition => Component => {
 
     render() {
       return (
+        //needed to avoid showing the protected page before the redirect happens
         <AuthUserContext.Consumer>
           {authUser =>
             condition(authUser) ? <Component {...this.props} /> : null

@@ -1,3 +1,9 @@
+//Websites used in the creation of this code
+//https://reactjs.org/docs --> in reference to the javascript library
+//https://firebase.google.com/docs  --> in reference to the database code
+//https://www.styled-components.com/docs --> in reference to the styling of the application
+//https://www.npmjs.com/package/react-router-dom --> used for routing throughout the application
+
 import React from "react";
 import NavBar from "./components/navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -18,13 +24,12 @@ import AccountPage from "./components/Account";
 import AdminPage from "./components/Admin";
 import Creator from "./components/Newsletter/creator";
 
-//import "./App.css";
-
 const App = () => (
   <React.Fragment>
     <Router>
       <div>
         <NavBar />
+        {/* route to component mapping */}
         <Switch>
           <Route path={ROUTES.LANDING} component={Landing} exact />
           <Route path={ROUTES.SIGN_UP} component={Signup} />
