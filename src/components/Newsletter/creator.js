@@ -133,15 +133,11 @@ const CreatorPage = () => (
   </div>
 );
 
-const newsletter = {
+const INITIAL_STATE = {
   news: [{ heading: "", body: "", link: "" }],
   name: "",
   description: "",
   email: ""
-};
-
-const INITIAL_STATE = {
-  newsletter
 };
 
 // const NewsletterList = ({ newsletters }) => (
@@ -181,21 +177,21 @@ class CreatorFormBase extends React.Component {
 
   handleChange = e => {
     if (["heading", "body", "Link"].includes(e.target.className)) {
-      let news = [...this.state.newsletter.news];
+      let news = [...this.state.news];
       news[e.target.dataset.id][e.target.className] = e.target.value;
-      this.setState({ news }, () => console.log(this.state.newsletter.news));
+      this.setState({ news }, () => console.log(this.state.news));
     } else {
       this.setState({ [e.target.heading]: e.target.value });
     }
   };
 
   onChange = event => {
-    this.setState.newsletter({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
     console.log(this.state);
   };
 
   onSubmit = event => {
-    const { newsletter, news, name, description, email } = this.state;
+    const { news, name, description, email } = this.state;
 
     this.props.firebase
       .doCreateNewsletter(news, name, description, email)
@@ -222,12 +218,12 @@ class CreatorFormBase extends React.Component {
 
   addNewsItem = e => {
     this.setState(prevState => ({
-      news: [...prevState.newsletter.news, { heading: "", body: "", Link: "" }]
+      news: [...prevState.news, { heading: "", body: "", Link: "" }]
     }));
   };
 
   removeClick(i) {
-    let news = [...this.state.newsletter.news];
+    let news = [...this.state.news];
     news.splice(i, 1);
     this.setState({ news });
   }
@@ -238,7 +234,7 @@ class CreatorFormBase extends React.Component {
 
   render() {
     const { newsletters, loading } = this.state;
-    let { newsletter, name, description, news, email } = this.state;
+    let { name, description, news, email } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <Wrapper>
@@ -256,7 +252,7 @@ class CreatorFormBase extends React.Component {
               name="name"
               id="name"
               onChange={this.onChange}
-              value={newsletter.name}
+              value={name}
             />
           </CenterDiv>
           <CenterDiv>
@@ -266,11 +262,11 @@ class CreatorFormBase extends React.Component {
               name="description"
               id="description"
               onChange={this.onChange}
-              value={newsletter.description}
+              value={description}
             />
           </CenterDiv>
           <GreenButton onClick={this.addNewsItem}>Add News Item</GreenButton>
-          {newsletter.news.map((val, idx) => {
+          {news.map((val, idx) => {
             let headingId = `heading-${idx}`,
               bodyId = `body-${idx}`,
               linkId = `link-${idx}`;
@@ -286,7 +282,7 @@ class CreatorFormBase extends React.Component {
                   name={headingId}
                   data-id={idx}
                   id={headingId}
-                  value={newsletter.news[idx].heading}
+                  value={news[idx].heading}
                   onChange={this.handleChange}
                   className="heading"
                 />
@@ -300,7 +296,7 @@ class CreatorFormBase extends React.Component {
                   data-id={idx}
                   id={bodyId}
                   onChange={this.handleChange}
-                  value={newsletter.news[idx].body}
+                  value={news[idx].body}
                   className="body"
                 />
 
@@ -311,7 +307,7 @@ class CreatorFormBase extends React.Component {
                   name={linkId}
                   data-id={idx}
                   id={linkId}
-                  value={newsletter.news[idx].link}
+                  value={news[idx].link}
                   onChange={this.handleChange}
                   className="link"
                 />
@@ -329,7 +325,7 @@ class CreatorFormBase extends React.Component {
               name="email"
               id="email"
               onChange={this.onChange}
-              value={newsletter.email}
+              value={email}
             />
           </CenterDiv>
           <CenterDiv>
