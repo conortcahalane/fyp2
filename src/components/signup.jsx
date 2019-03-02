@@ -111,6 +111,7 @@ class SignUpFormBase extends Component {
         this.props.history.push(ROUTES.HOME);
       })
       .catch(error => {
+        //error handling
         this.setState({ error });
       });
 
@@ -124,6 +125,7 @@ class SignUpFormBase extends Component {
   render() {
     const { username, email, passwordOne, passwordTwo, error } = this.state;
 
+    // || short circuit operator, basically means if something is true
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === "" ||

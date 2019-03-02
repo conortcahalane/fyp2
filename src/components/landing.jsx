@@ -80,7 +80,7 @@ const Landing = () => {
           />
         </InsideWrapper>
         <Title>Welcome to Up2Date</Title>
-        <Text>The Dynamic internal newsletter creator for business'.</Text>
+        <Text>The Dynamic internal newsletter creator for businesses.</Text>
         <ButtonWrapper>
           <Button to={ROUTES.SIGN_IN}>Sign In</Button>
           <Button to={ROUTES.SIGN_UP}>Sign Up</Button>

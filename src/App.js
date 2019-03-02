@@ -13,7 +13,6 @@ import Home from "./components/home";
 import NotFound from "./components/404";
 import About from "./components/about";
 import Instructions from "./components/instructions";
-import Newsletter from "./components/Newsletter/newsletter";
 import Landing from "./components/landing";
 import Signin from "./components/signin";
 import Signup from "./components/signup";
@@ -37,7 +36,6 @@ const App = () => (
           <Route path={ROUTES.ABOUT} component={About} />
           <Route path={ROUTES.INSTRUCTIONS} component={Instructions} />
           <Route path={ROUTES.HOME} component={Home} />
-          <Route path={ROUTES.NEWSLETTER} component={Newsletter} />
           <Route path={ROUTES.CREATOR} component={Creator} />
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />

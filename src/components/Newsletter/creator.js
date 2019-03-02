@@ -5,6 +5,9 @@
 
 import React from "react";
 import styled from "styled-components";
+import { compose } from "recompose";
+import { withRouter } from "react-router-dom";
+import { withFirebase } from "../firebase";
 
 // Create a Title component that'll render an <h1> tag with some styles
 
@@ -117,40 +120,114 @@ const Footer = styled.section`
   background: palevioletred;
 `;
 
-class Creator extends React.Component {
-  state = {
-    news: [{ heading: "", body: "", link: "" }],
-    name: "",
-    description: "",
-    email: ""
-  };
+const CreatorPage = () => (
+  <div>
+    <Wrapper>
+      <CreatorForm />
+    </Wrapper>
+    <Footer>
+      <FooterText>
+        Developed by Conor Cahalane using React and Firebase
+      </FooterText>
+    </Footer>
+  </div>
+);
+
+const newsletter = {
+  news: [{ heading: "", body: "", link: "" }],
+  name: "",
+  description: "",
+  email: ""
+};
+
+const INITIAL_STATE = {
+  newsletter
+};
+
+// const NewsletterList = ({ newsletters }) => (
+//   <ul>
+//     {newsletters.map(newsletter => (
+//       <NewsletterItem key={newsletter.uid} newsletter={newsletter} />
+//     ))}
+//   </ul>
+// );
+
+// const NewsletterItem = ({ newsletter }) => (
+//   <li>
+//     <strong>{newsletter.userId}</strong> {newsletter.text}
+//   </li>
+// );
+
+class CreatorFormBase extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { ...INITIAL_STATE };
+  }
+
+  // componentDidMount() {
+  //   this.setState({ loading: true });
+
+  //   this.props.firebase.newsletters().on("value", snapshot => {
+  //     // convert newsletters list from snapshot
+
+  //     this.setState({ loading: false });
+  //   });
+  // }
+
+  // componentWillUnmount() {
+  //   this.props.firebase.newsletters().off();
+  // }
+
   handleChange = e => {
-    if (["name"].includes(e.target.className)) {
-      let name = [...this.state.name];
-      name[e.target.name] = e.target.value;
-      this.setState({ name }, () => console.log(this.state.name));
-    }
-
-    // let email = [...this.state.email];
-    // email[e.target.email] = e.target.value;
-    // this.setState({ email }, () => console.log(this.state.email));
-
     if (["heading", "body", "Link"].includes(e.target.className)) {
-      let news = [...this.state.news];
+      let news = [...this.state.newsletter.news];
       news[e.target.dataset.id][e.target.className] = e.target.value;
-      this.setState({ news }, () => console.log(this.state.news));
+      this.setState({ news }, () => console.log(this.state.newsletter.news));
     } else {
       this.setState({ [e.target.heading]: e.target.value });
     }
   };
+
+  onChange = event => {
+    this.setState.newsletter({ [event.target.name]: event.target.value });
+    console.log(this.state);
+  };
+
+  onSubmit = event => {
+    const { newsletter, news, name, description, email } = this.state;
+
+    this.props.firebase
+      .doCreateNewsletter(news, name, description, email)
+      .then(authUser => {
+        // Create a user in your Firebase realtime database
+        return this.props.firebase.user(authUser.user.uid).newsletter.set({
+          news,
+          name,
+          description,
+          email
+        });
+      })
+      .then(() => {
+        this.setState({ ...INITIAL_STATE });
+        console.log(this.state);
+      })
+      .catch(error => {
+        //error handling
+        this.setState({ error });
+      });
+
+    event.preventDefault();
+  };
+
   addNewsItem = e => {
     this.setState(prevState => ({
-      news: [...prevState.news, { heading: "", body: "", Link: "" }]
+      news: [...prevState.newsletter.news, { heading: "", body: "", Link: "" }]
     }));
   };
 
   removeClick(i) {
-    let news = [...this.state.news];
+    let news = [...this.state.newsletter.news];
     news.splice(i, 1);
     this.setState({ news });
   }
@@ -160,27 +237,40 @@ class Creator extends React.Component {
   };
 
   render() {
-    let { name, description, news, email } = this.state;
+    const { newsletters, loading } = this.state;
+    let { newsletter, name, description, news, email } = this.state;
     return (
-      <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+      <form onSubmit={this.handleSubmit}>
         <Wrapper>
+          {/* <div>
+            {loading && <div>Loading ...</div>}
+
+            <NewsletterList newsletters={newsletters} />
+          </div> */}
           <NewsTitle>Newsletter Creator</NewsTitle>
           <br />
           <CenterDiv>
             <Heading htmlFor="name">Newsletter Title:</Heading>
-            <input type="text" heading="name" id="name" value={name} />
+            <input
+              type="text"
+              name="name"
+              id="name"
+              onChange={this.onChange}
+              value={newsletter.name}
+            />
           </CenterDiv>
           <CenterDiv>
             <Heading2 htmlFor="description">Description</Heading2>
             <input
               type="text"
-              heading="description"
+              name="description"
               id="description"
-              value={description}
+              onChange={this.onChange}
+              value={newsletter.description}
             />
           </CenterDiv>
           <GreenButton onClick={this.addNewsItem}>Add News Item</GreenButton>
-          {news.map((val, idx) => {
+          {newsletter.news.map((val, idx) => {
             let headingId = `heading-${idx}`,
               bodyId = `body-${idx}`,
               linkId = `link-${idx}`;
@@ -196,7 +286,8 @@ class Creator extends React.Component {
                   name={headingId}
                   data-id={idx}
                   id={headingId}
-                  value={news[idx].heading}
+                  value={newsletter.news[idx].heading}
+                  onChange={this.handleChange}
                   className="heading"
                 />
                 <Heading2 htmlFor={bodyId}>Body:</Heading2>
@@ -208,7 +299,8 @@ class Creator extends React.Component {
                   name={bodyId}
                   data-id={idx}
                   id={bodyId}
-                  value={news[idx].body}
+                  onChange={this.handleChange}
+                  value={newsletter.news[idx].body}
                   className="body"
                 />
 
@@ -219,7 +311,8 @@ class Creator extends React.Component {
                   name={linkId}
                   data-id={idx}
                   id={linkId}
-                  value={news[idx].link}
+                  value={newsletter.news[idx].link}
+                  onChange={this.handleChange}
                   className="link"
                 />
 
@@ -231,11 +324,17 @@ class Creator extends React.Component {
           })}
           <CenterDiv>
             <Heading2 htmlFor="email">Enter your Email Address</Heading2>
-            <input type="text" heading="email" id="email" value={email} />
+            <input
+              type="text"
+              name="email"
+              id="email"
+              onChange={this.onChange}
+              value={newsletter.email}
+            />
           </CenterDiv>
           <CenterDiv>
             <GreenButton onClick={this.addNewsItem}>Add News Item</GreenButton>
-            <BlueButton type="submit" value="Submit">
+            <BlueButton type="submit" onClick={this.onSubmit} value="Submit">
               Save Newsletter
             </BlueButton>
             <YellowButton type="send" value="Send">
@@ -243,13 +342,15 @@ class Creator extends React.Component {
             </YellowButton>
           </CenterDiv>
         </Wrapper>
-        <Footer>
-          <FooterText>
-            Developed by Conor Cahalane using React and Firebase
-          </FooterText>
-        </Footer>
       </form>
     );
   }
 }
-export default Creator;
+
+const CreatorForm = compose(
+  withRouter,
+  withFirebase
+)(CreatorFormBase);
+
+export default CreatorPage;
+export { CreatorForm };

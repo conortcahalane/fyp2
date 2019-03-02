@@ -22,10 +22,13 @@ class Firebase {
     this.auth = app.auth();
     this.db = app.database();
   }
-  //  Auth API 
+  //  Auth API
 
   doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
+
+  doCreateNewsletter = (news, name, description, email) =>
+    this.auth.createNewsletter(news, name, description, email);
 
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
@@ -36,12 +39,20 @@ class Firebase {
 
   doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
-  //  User API 
+  //  User API
 
-//ref() refers to the location where the data will be stored in Firebase’s realtime database API.
+  //ref() refers to the location where the data will be stored in Firebase’s realtime database API.
   user = uid => this.db.ref(`users/${uid}`);
 
   users = () => this.db.ref("users");
+
+  //  News API
+
+  //ref() refers to the location where the data will be stored in Firebase’s realtime database API.
+
+  newsletter = uid => this.db.ref(`newsletters/${uid}`);
+
+  newsletters = () => this.db.ref("newsletters");
 }
 
 export default Firebase;
