@@ -27,8 +27,17 @@ class Firebase {
   doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
-  doCreateNewsletter = (news, name, description, email) =>
-    this.auth.createNewsletter(news, name, description, email);
+  doCreateNewsletter = (news, name, description, email) => {
+    const newsletter = { news, name, description, email };
+    const newPostKey = this.db()
+      .ref()
+      .child("newsletters")
+      .push().key;
+    return this.db
+      .ref()
+      .child("/newsletters/" + newPostKey)
+      .set(newsletter);
+  };
 
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);

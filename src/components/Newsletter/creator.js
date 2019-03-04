@@ -6,8 +6,9 @@
 import React from "react";
 import styled from "styled-components";
 import { compose } from "recompose";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { withFirebase } from "../firebase";
+import * as ROUTES from "../../constants/routes";
 
 // Create a Title component that'll render an <h1> tag with some styles
 
@@ -176,7 +177,7 @@ class CreatorFormBase extends React.Component {
   // }
 
   handleChange = e => {
-    if (["heading", "body", "Link"].includes(e.target.className)) {
+    if (["heading", "body", "link"].includes(e.target.className)) {
       let news = [...this.state.news];
       news[e.target.dataset.id][e.target.className] = e.target.value;
       this.setState({ news }, () => console.log(this.state.news));
