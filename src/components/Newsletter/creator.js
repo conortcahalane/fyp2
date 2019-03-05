@@ -9,7 +9,7 @@ import { compose } from "recompose";
 import { Link, withRouter } from "react-router-dom";
 import { withFirebase } from "../firebase";
 import * as ROUTES from "../../constants/routes";
-
+import "../../App.css";
 // Create a Title component that'll render an <h1> tag with some styles
 
 const Title = styled.h1`
@@ -141,40 +141,12 @@ const INITIAL_STATE = {
   email: ""
 };
 
-// const NewsletterList = ({ newsletters }) => (
-//   <ul>
-//     {newsletters.map(newsletter => (
-//       <NewsletterItem key={newsletter.uid} newsletter={newsletter} />
-//     ))}
-//   </ul>
-// );
-
-// const NewsletterItem = ({ newsletter }) => (
-//   <li>
-//     <strong>{newsletter.userId}</strong> {newsletter.text}
-//   </li>
-// );
-
 class CreatorFormBase extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { ...INITIAL_STATE };
   }
-
-  // componentDidMount() {
-  //   this.setState({ loading: true });
-
-  //   this.props.firebase.newsletters().on("value", snapshot => {
-  //     // convert newsletters list from snapshot
-
-  //     this.setState({ loading: false });
-  //   });
-  // }
-
-  // componentWillUnmount() {
-  //   this.props.firebase.newsletters().off();
-  // }
 
   handleChange = e => {
     if (["heading", "body", "link"].includes(e.target.className)) {
@@ -189,6 +161,10 @@ class CreatorFormBase extends React.Component {
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
     console.log(this.state);
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
   };
 
   onSubmit = event => {
@@ -229,27 +205,35 @@ class CreatorFormBase extends React.Component {
     this.setState({ news });
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
-  };
+  validate(name, description, news, email) {
+    // true means invalid, so our conditions got reversed
+    return {
+      name: name.length === 0,
+      description: description.length === 0,
+      news: news.length === 0,
+      email: email.length === 0
+    };
+  }
 
   render() {
-    const { newsletters, loading } = this.state;
     let { name, description, news, email } = this.state;
+    const errors = this.validate(name, description, news, email);
+    const isEnabled = !Object.keys(errors).some(x => errors[x]);
+    // const isEnabled =
+    //   email.length > 0 &&
+    //   name.length > 0 &&
+    //   news.length > 0 &&
+    //   description.length > 0;
     return (
       <form onSubmit={this.handleSubmit}>
         <Wrapper>
-          {/* <div>
-            {loading && <div>Loading ...</div>}
-
-            <NewsletterList newsletters={newsletters} />
-          </div> */}
           <NewsTitle>Newsletter Creator</NewsTitle>
           <br />
           <CenterDiv>
             <Heading htmlFor="name">Newsletter Title:</Heading>
             <input
               type="text"
+              className={errors.name ? "error" : ""}
               name="name"
               id="name"
               onChange={this.onChange}
@@ -260,6 +244,7 @@ class CreatorFormBase extends React.Component {
             <Heading2 htmlFor="description">Description</Heading2>
             <input
               type="text"
+              className={errors.description ? "error" : ""}
               name="description"
               id="description"
               onChange={this.onChange}
@@ -323,6 +308,7 @@ class CreatorFormBase extends React.Component {
             <Heading2 htmlFor="email">Enter your Email Address</Heading2>
             <input
               type="text"
+              className={errors.email ? "error" : ""}
               name="email"
               id="email"
               onChange={this.onChange}
@@ -331,7 +317,12 @@ class CreatorFormBase extends React.Component {
           </CenterDiv>
           <CenterDiv>
             <GreenButton onClick={this.addNewsItem}>Add News Item</GreenButton>
-            <BlueButton type="submit" onClick={this.onSubmit} value="Submit">
+            <BlueButton
+              type="submit"
+              onClick={this.onSubmit}
+              value="Submit"
+              disabled={!isEnabled}
+            >
               Save Newsletter
             </BlueButton>
             <YellowButton type="send" value="Send">
