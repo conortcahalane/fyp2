@@ -51,17 +51,17 @@ class Firebase {
   //  User API
 
   //ref() refers to the location where the data will be stored in Firebase’s realtime database API.
-  user = uid => this.db.ref(`users/${uid}`);
+  user = uid => this.db().ref(`users/${uid}`);
 
-  users = () => this.db.ref("users");
+  users = () => this.db().ref("users");
 
   //  News API
 
   //ref() refers to the location where the data will be stored in Firebase’s realtime database API.
 
-  newsletter = uid => this.db.ref(`newsletters/${uid}`);
+  newsletter = uid => this.db().ref(`newsletters/${uid}`);
 
-  newsletters = () => this.db.ref("newsletters");
+  newsletters = () => this.db().ref("newsletters");
 }
 
 export default Firebase;

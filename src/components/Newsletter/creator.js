@@ -2,11 +2,12 @@
 //https://reactjs.org/docs --> in reference to the javascript library
 //https://firebase.google.com/docs  --> in reference to the database code
 //https://www.styled-components.com/docs --> in reference to the styling of the application
+//https://www.npmjs.com/package/react-router-dom --> used for routing throughout the application
 
 import React from "react";
 import styled from "styled-components";
 import { compose } from "recompose";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { withFirebase } from "../firebase";
 import * as ROUTES from "../../constants/routes";
 import "../../App.css";
@@ -183,13 +184,15 @@ class CreatorFormBase extends React.Component {
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        console.log(this.state);
       })
       .catch(error => {
         //error handling
         this.setState({ error });
       });
 
+    console.log(this.state);
+    alert(`Newsletter Saved`);
+    this.props.history.push(ROUTES.TEMPLATEDEMAIL);
     event.preventDefault();
   };
 
@@ -323,11 +326,9 @@ class CreatorFormBase extends React.Component {
               value="Submit"
               disabled={!isEnabled}
             >
-              Save Newsletter
+              Save and View
             </BlueButton>
-            <YellowButton type="send" value="Send">
-              Send
-            </YellowButton>
+            {/* <YellowButton value="View">View</YellowButton> */}
           </CenterDiv>
         </Wrapper>
       </form>
