@@ -11,3 +11,4 @@ export const USER = "/user";
 export const PASSWORD_FORGET = "/passwordforget";
 export const ACCOUNT = "/account";
 export const ADMIN = "/admin";
+export const TEMPLATEDEMAIL = "/templatedemail";

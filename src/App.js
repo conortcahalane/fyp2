@@ -22,6 +22,7 @@ import PasswordForgetPage from "./components/passwordforget";
 import AccountPage from "./components/Account";
 import AdminPage from "./components/Admin";
 import Creator from "./components/Newsletter/creator";
+import TemplatedEmailPage from "./components/TemplateEmail/templatedemail";
 
 const App = () => (
   <React.Fragment>
@@ -40,6 +41,7 @@ const App = () => (
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />
+          <Route path={ROUTES.TEMPLATEDEMAIL} component={TemplatedEmailPage} />
           <Route component={NotFound} />
         </Switch>
       </div>

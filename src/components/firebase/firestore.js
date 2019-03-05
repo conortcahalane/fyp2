@@ -2,7 +2,7 @@
 //https://reactjs.org/docs --> in reference to the javascript library
 //https://firebase.google.com/docs  --> in reference to the database code
 //https://www.styled-components.com/docs --> in reference to the styling of the application
-
+import firebase from "firebase/app";
 import app from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
@@ -20,7 +20,7 @@ class Firebase {
   constructor() {
     app.initializeApp(config);
     this.auth = app.auth();
-    this.db = app.database();
+    this.db = firebase.database;
   }
   //  Auth API
 
@@ -33,7 +33,7 @@ class Firebase {
       .ref()
       .child("newsletters")
       .push().key;
-    return this.db
+    return this.db()
       .ref()
       .child("/newsletters/" + newPostKey)
       .set(newsletter);
