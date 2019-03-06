@@ -81,7 +81,7 @@ var generateSingleParagraph = function(Newsitem) {
                                 </tr>
                                 <br></br>
                                 ` +
-    NewsItem(news) +
+    getNewsItem(news) +
     `
                         </td>
                     </tr>

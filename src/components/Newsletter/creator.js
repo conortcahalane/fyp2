@@ -231,6 +231,7 @@ class CreatorFormBase extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <Wrapper>
           <NewsTitle>Newsletter Creator</NewsTitle>
+          <hr color="#af5a76" width="50%" />
           <br />
           <CenterDiv>
             <Heading htmlFor="name">Newsletter Title:</Heading>
@@ -307,6 +308,7 @@ class CreatorFormBase extends React.Component {
               </div>
             );
           })}
+
           <CenterDiv>
             <Heading2 htmlFor="email">Enter your Email Address</Heading2>
             <input
@@ -318,6 +320,7 @@ class CreatorFormBase extends React.Component {
               value={email}
             />
           </CenterDiv>
+          <hr color="#af5a76" width="80%" />
           <CenterDiv>
             <GreenButton onClick={this.addNewsItem}>Add News Item</GreenButton>
             <BlueButton
