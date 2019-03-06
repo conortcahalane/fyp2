@@ -62,7 +62,7 @@ class TemplatedEmailPage extends Component {
       });
     });
     var s = document.getElementById("newsletter");
-    s.contentDocument.write("fredrules");
+    // s.contentDocument.write("templatedemail.html");
   }
 
   //remove the listener to avoid memory leaks from using the same reference with the off()
