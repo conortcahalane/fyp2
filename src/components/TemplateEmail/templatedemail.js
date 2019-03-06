@@ -85,7 +85,7 @@ class TemplatedEmailPage extends Component {
 
           {loading && <div>Loading ...</div>}
 
-          <NewsletterList newsletters={newsletters} />
+          <NewsletterTemplate newsletters={newsletters} />
         </Wrapper>
         <Wrapper />
         <Footer>
@@ -98,7 +98,7 @@ class TemplatedEmailPage extends Component {
   }
 }
 
-const NewsletterList = ({ newsletters }) => (
+const NewsletterTemplate = ({ newsletters }) => (
   <Wrapper>
     <Wrapper>
       <iframe
