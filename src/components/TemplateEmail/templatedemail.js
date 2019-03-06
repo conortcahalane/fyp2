@@ -61,8 +61,9 @@ class TemplatedEmailPage extends Component {
         loading: false
       });
     });
-    var s = document.getElementById("newsletter");
-    // s.contentDocument.write("templatedemail.html");
+    var ifr = document.createElement("iframe");
+    ifr.srcdoc = "<html><body><h1>hello!</h1></body></html>";
+    document.querySelectorAll("div")[0].append(ifr);
   }
 
   //remove the listener to avoid memory leaks from using the same reference with the off()
@@ -96,7 +97,7 @@ class TemplatedEmailPage extends Component {
 const NewsletterList = ({ newsletters }) => (
   <Wrapper>
     <Wrapper>
-      <iframe id="newsletter" width="1000" height="5000" />
+      <iframe id="iframe" width="1000" height="5000" />
     </Wrapper>
   </Wrapper>
 );
