@@ -49,6 +49,10 @@ const Footer = styled.section`
   background: palevioletred;
 `;
 
+const Centered = styled.section`
+  text-align: center;
+`;
+
 class AdminPage extends Component {
   constructor(props) {
     super(props);
@@ -111,8 +115,14 @@ class AdminPage extends Component {
           {loading && <div>Loading ...</div>}
 
           <UserList users={users} />
-          <NewsletterList newsletters={newsletters} />
+          <Centered>
+            <NewsletterList newsletters={newsletters} />
+          </Centered>
         </Wrapper>
+        <Wrapper />
+        <Wrapper />
+        <Wrapper />
+        <Wrapper />
         <Wrapper />
         <Footer>
           <FooterText>
@@ -166,14 +176,25 @@ const NewsletterList = ({ newsletters }) => (
           <span>
             <strong>Description</strong> {newsletter.description}
           </span>
-          <span> -- </span>
+          <br />
           <span>
-            <strong>News Items</strong> {newsletter.news.body}
+            <strong>News Items</strong>
+            {newsletter.news.map(news => {
+              return (
+                <div key={newsletter.uid}>
+                  <span>{news.heading} / </span>
+                  <span>{news.body} / </span>
+                  <span>{news.link} /</span>
+                  <span> -- </span>
+                </div>
+              );
+            })}
           </span>
-          <span> -- </span>
+          <br />
           <span>
             <strong>E-Mail:</strong> {newsletter.email}
           </span>
+          <hr />
         </li>
       ))}
     </Wrapper>
