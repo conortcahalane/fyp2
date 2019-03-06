@@ -65,9 +65,9 @@ class TemplatedEmailPage extends Component {
       });
     });
 
-    var ifr = document.createElement("iframe");
-    ifr.srcdoc = "<html><body><h1>hello!</h1></body></html>";
-    document.querySelectorAll("div")[0].append(ifr);
+    // var ifr = document.createElement("iframe");
+    // ifr.srcdoc = "<html><body><h1>hello!</h1></body></html>";
+    // document.querySelectorAll("div")[0].append(ifr);
   }
 
   //remove the listener to avoid memory leaks from using the same reference with the off()
