@@ -12,6 +12,11 @@ const Title = styled.h1`
   text-align: center;
   color: #af5a76;
 `;
+const SubTitle = styled.h1`
+  font-size: 1.25em;
+  text-align: center;
+  color: palevioletred;
+`;
 const Header = styled.h1`
   font-size: 1.25em;
   text-align: center;
@@ -57,7 +62,8 @@ const About = () => {
       <Wrapper>
         <Title>About Up2Date</Title>
         <InsideWrapper>
-          <Text>Developed with such technologies as</Text>
+          <SubTitle>Developed with such technologies as</SubTitle>
+          <hr color="#af5a76" />
           <PicWrapper>
             <img
               src={require("../resources/about/node.png")}
@@ -74,6 +80,7 @@ const About = () => {
           </Text>
         </InsideWrapper>
         <InsideWrapper>
+          <hr color="#af5a76" />
           <PicWrapper>
             <img
               src={require("../resources/about/react.png")}
@@ -94,6 +101,7 @@ const About = () => {
           </Text>
         </InsideWrapper>
         <InsideWrapper>
+          <hr color="#af5a76" />
           <PicWrapper>
             <img
               src={require("../resources/about/firebase.png")}
@@ -110,6 +118,7 @@ const About = () => {
           </Text>
         </InsideWrapper>
         <InsideWrapper>
+          <hr color="#af5a76" />
           <Header>Visual Studio Code</Header>
           <PicWrapper>
             <img
@@ -128,6 +137,7 @@ const About = () => {
           </Text>
         </InsideWrapper>
         <InsideWrapper>
+          <hr color="#af5a76" />
           <PicWrapper>
             <img
               src={require("../resources/about/html.png")}

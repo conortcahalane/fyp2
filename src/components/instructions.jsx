@@ -66,6 +66,7 @@ class Instructions extends Component {
             </Text>
           </InsideWrapper>
           <InsideWrapper>
+            <hr color="#af5a76" />
             <Text>
               <b>
                 <u>Step 1</u>:
@@ -83,6 +84,7 @@ class Instructions extends Component {
             </PicWrapper>
           </InsideWrapper>
           <InsideWrapper>
+            <hr color="#af5a76" />
             <Text>
               <b>
                 <u>Step 2</u>:
@@ -102,6 +104,7 @@ class Instructions extends Component {
             </PicWrapper>
           </InsideWrapper>
           <InsideWrapper>
+            <hr color="#af5a76" />
             <Text>
               <b>
                 <u>Step 3</u>:
@@ -121,6 +124,7 @@ class Instructions extends Component {
             </PicWrapper>
           </InsideWrapper>
           <InsideWrapper>
+            <hr color="#af5a76" />
             <Text>
               <b>
                 <u>Step 4</u>:
@@ -138,6 +142,7 @@ class Instructions extends Component {
             </PicWrapper>
           </InsideWrapper>
           <InsideWrapper>
+            <hr color="#af5a76" />
             <Text>
               <b>
                 <u>Step 5</u>:
@@ -157,12 +162,14 @@ class Instructions extends Component {
             </PicWrapper>
           </InsideWrapper>
           <InsideWrapper>
+            <hr color="#af5a76" />
             <Text>
               <b>
                 <u>Step 6</u>:
               </b>
-              At the bottom of the screen there is a save button. This will save
-              and store the your newletter.
+              At the bottom of the screen there is a save and view button. This
+              will save and store the your newletter and redirect you to a page
+              where you can view your templated newsletter.
             </Text>
             <PicWrapper>
               <img
@@ -173,7 +180,7 @@ class Instructions extends Component {
               />
             </PicWrapper>
           </InsideWrapper>
-          <InsideWrapper>
+          {/* <InsideWrapper>
             <Text>
               <b>
                 <u>Step 7</u>:
@@ -191,8 +198,9 @@ class Instructions extends Component {
                 width="175"
               />
             </PicWrapper>
-          </InsideWrapper>
+          </InsideWrapper> */}
           <InsideWrapper>
+            <hr color="#af5a76" />
             <Text>
               <b>
                 With these few steps you will be able to create quick, dynamic

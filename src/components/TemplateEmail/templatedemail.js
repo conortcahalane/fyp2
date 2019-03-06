@@ -74,7 +74,7 @@ class TemplatedEmailPage extends Component {
     return (
       <div>
         <Wrapper>
-          <Title>Admin</Title>
+          <Title>Newsletter</Title>
 
           {loading && <div>Loading ...</div>}
 
@@ -115,9 +115,8 @@ const NewsletterList = ({ newsletters }) => (
       ))}
     </Wrapper>
     <Wrapper>
-      <iframe id="newsletter" width="1000" height="5000">
-        {/*       
-     
+      {/* <iframe id="newsletter" width="1000" height="5000">
+       <HTMLIFrameElement></HTMLIFrameElement>
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -579,7 +578,7 @@ td[class="spechide"]
       <td valign="top" width="52" align="center"><div class="contentEditableContainer contentTwitterEditable">
                             <div class="contentEditable">
 							
-                              <a target='_blank' href="#"><img src="images/twitter2.png" width='52' data-customIcon="true" height='52' alt='twitter icon' data-default="placeholder" data-max-width="52"></a>
+                              <a target='_blank' href="#"><img src="images/twitter2.png" width='52' data-customIcon="true" height='52' alt='twitter icon' data-default="placeholder" data-max-width="52"></img></a>
                             </div>
                           </div></td>
     </tr>
@@ -618,8 +617,8 @@ td[class="spechide"]
 </table>
 
       </body>
-      </html> */}
-      </iframe>
+      </html> 
+      </iframe> */}
     </Wrapper>
   </Wrapper>
 );

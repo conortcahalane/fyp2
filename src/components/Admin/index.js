@@ -13,6 +13,22 @@ const Title = styled.h1`
   text-align: center;
   color: #af5a76;
 `;
+const SubTitle = styled.h1`
+  font-size: 2em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+const Line = styled.hr`
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 5px;
+  color: #af5a76;
+`;
 
 const FooterText = styled.h3`
   font-size: 0.75em;
@@ -39,7 +55,8 @@ class AdminPage extends Component {
 
     this.state = {
       loading: false,
-      users: []
+      users: [],
+      newsletters: []
     };
   }
 
@@ -61,15 +78,30 @@ class AdminPage extends Component {
         loading: false
       });
     });
+    this.props.firebase.newsletters().on("value", snapshot => {
+      const newslettersObject = snapshot.val();
+
+      const newslettersList = Object.keys(newslettersObject).map(key => ({
+        ...newslettersObject[key],
+        uid: key
+      }));
+
+      this.setState({
+        newsletters: newslettersList,
+        loading: false
+      });
+    });
   }
 
   //remove the listener to avoid memory leaks from using the same reference with the off()
   componentWillUnmount() {
     this.props.firebase.users().off();
+
+    this.props.firebase.newsletters().off();
   }
 
   render() {
-    const { users, loading } = this.state;
+    const { newsletters, users, loading } = this.state;
 
     return (
       <div>
@@ -79,6 +111,7 @@ class AdminPage extends Component {
           {loading && <div>Loading ...</div>}
 
           <UserList users={users} />
+          <NewsletterList newsletters={newsletters} />
         </Wrapper>
         <Wrapper />
         <Footer>
@@ -93,19 +126,57 @@ class AdminPage extends Component {
 
 const UserList = ({ users }) => (
   <Wrapper>
-    {users.map(user => (
-      <li key={user.uid}>
-        <span>
-          <strong>ID:</strong> {user.uid}
-        </span>
-        <span>
-          <strong>E-Mail:</strong> {user.email}
-        </span>
-        <span>
-          <strong>Username:</strong> {user.username}
-        </span>
-      </li>
-    ))}
+    <Line />
+    <SubTitle>User Data</SubTitle>
+    <Wrapper>
+      {users.map(user => (
+        <li key={user.uid}>
+          <span>
+            <strong>ID:</strong> {user.uid}
+          </span>
+          <span> -- </span>
+          <span>
+            <strong>E-Mail:</strong> {user.email}
+          </span>
+          <span> -- </span>
+          <span>
+            <strong>Username:</strong> {user.username}
+          </span>
+        </li>
+      ))}
+    </Wrapper>
+  </Wrapper>
+);
+
+const NewsletterList = ({ newsletters }) => (
+  <Wrapper>
+    <Line />
+    <SubTitle>Newsletter Data</SubTitle>
+    <Wrapper>
+      {newsletters.map(newsletter => (
+        <li key={newsletter.uid}>
+          <span>
+            <strong>ID:</strong> {newsletter.uid}
+          </span>
+          <span> -- </span>
+          <span>
+            <strong>Name:</strong> {newsletter.name}
+          </span>
+          <span> -- </span>
+          <span>
+            <strong>Description</strong> {newsletter.description}
+          </span>
+          <span> -- </span>
+          <span>
+            <strong>News Items</strong> {newsletter.news.body}
+          </span>
+          <span> -- </span>
+          <span>
+            <strong>E-Mail:</strong> {newsletter.email}
+          </span>
+        </li>
+      ))}
+    </Wrapper>
   </Wrapper>
 );
 
