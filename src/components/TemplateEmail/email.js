@@ -1,4 +1,4 @@
-exports.allNewsHtml = function(NewsItem) {
+export function allNewsHtml(news) {
   var html = "";
   for (var i = 0; i < news.length; i++) {
     if (i + 1 === news.length && news.length % 2 === 0) {
@@ -9,7 +9,7 @@ exports.allNewsHtml = function(NewsItem) {
     }
   }
   return html;
-};
+}
 
 var generateDoubleTable = function(NewsItem1, NewsItem2) {
   return (

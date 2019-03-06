@@ -7,6 +7,9 @@ import React, { Component } from "react";
 import { withFirebase } from "../firebase";
 import styled from "styled-components";
 
+import { templateWithContent } from "./template";
+import { allNewsHtml } from "./email";
+
 // Create a Title component that'll render an <h1> tag with some styles
 const Title = styled.h1`
   font-size: 3em;
@@ -61,6 +64,7 @@ class TemplatedEmailPage extends Component {
         loading: false
       });
     });
+
     var ifr = document.createElement("iframe");
     ifr.srcdoc = "<html><body><h1>hello!</h1></body></html>";
     document.querySelectorAll("div")[0].append(ifr);
@@ -97,7 +101,12 @@ class TemplatedEmailPage extends Component {
 const NewsletterList = ({ newsletters }) => (
   <Wrapper>
     <Wrapper>
-      <iframe id="iframe" width="1000" height="5000" />
+      <iframe
+        id="iframe"
+        width="1000"
+        height="5000"
+        srcdoc={templateWithContent(allNewsHtml(newsletters[0].news))}
+      />
     </Wrapper>
   </Wrapper>
 );
