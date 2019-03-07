@@ -84,8 +84,9 @@ class TemplatedEmailPage extends Component {
           <Title>Newsletter</Title>
 
           {loading && <div>Loading ...</div>}
-
-          <NewsletterTemplate newsletters={newsletters} />
+          {!loading && newsletters.length > 0 && (
+            <NewsletterTemplate newsletters={newsletters} />
+          )}
         </Wrapper>
         <Wrapper />
         <Footer>
@@ -105,7 +106,12 @@ const NewsletterTemplate = ({ newsletters }) => (
         id="iframe"
         width="1000"
         height="5000"
-        srcdoc={templateWithContent(allNewsHtml(newsletters[0].news))}
+        srcDoc={templateWithContent(
+          allNewsHtml(newsletters[newsletters.length - 1].news),
+          newsletters[newsletters.length - 1].name,
+          newsletters[newsletters.length - 1].description,
+          newsletters[newsletters.length - 1].email
+        )}
       />
     </Wrapper>
   </Wrapper>

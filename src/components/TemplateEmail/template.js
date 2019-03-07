@@ -1,4 +1,4 @@
-exports.templateWithContent = function(content) {
+exports.templateWithContent = function(content, name, description, email) {
   return (
     `<html xmlns="http://www.w3.org/1999/xhtml">
             <head>
@@ -264,7 +264,9 @@ exports.templateWithContent = function(content) {
                                 <td>
                                   <div class="contentEditableContainer contentTextEditable">
                                     <div class="contentEditable" >
-                                      <h1 style='font-size:35px;text-align:center;color:#ffffff;font-weight:normal;margin:0;'>Your company Name</h1>
+                                      <h1 style='font-size:35px;text-align:center;color:#ffffff;font-weight:normal;margin:0;'>` +
+    name +
+    `</h1>
                                     </div>
                                   </div>
                                 </td>
@@ -274,9 +276,9 @@ exports.templateWithContent = function(content) {
                                 <td>
                                   <div class="contentEditableContainer contentTextEditable">
                                     <div class="contentEditable" >
-                                      <p style='text-align:center;font-size:16px;color:#ffffff;margin:0;'>
-                                        Your mission statement, vision or purpose in one sentence. Keep it short in the email but if you need to expand, link to your website’s <a target='_blank' href='#'>About us</a> page.
-                                      </p>
+                                      <p style='text-align:center;font-size:16px;color:#ffffff;margin:0;'>` +
+    description +
+    `</p>
                                     </div>
                                   </div>
                                 </td>
@@ -313,7 +315,10 @@ exports.templateWithContent = function(content) {
                     <td valign='top' align='center'>
                       <div class="contentEditableContainer contentTextEditable">
                         <div class="contentEditable" >
-                          <p style='color:#A8B0B6; font-size:13px;line-height: 16px;'>Are you giving up on your healthy resolutions? You can&nbsp;<a target='_blank' href='[UNSUBSCRIBE]' style='color:#A8B0B6;font-weight:bold;'>unsubscribe</a>&nbsp;here and we won’t make you feel guilty anymore.
+                          <p style='color:#A8B0B6; font-size:13px;line-height: 16px;'>
+                          If you have any queries about this newsletter feel free to contact ` +
+    email +
+    ` 
                           </p>
                         </div>
                       </div>
@@ -338,7 +343,9 @@ exports.templateWithContent = function(content) {
               <td valign="top" align="left" class="specbundle2"><div class="contentEditableContainer contentTextEditable">
                                     <div class="contentEditable" align='center'>
                                       <p  style='text-align:left;color:#999999;font-size:12px;font-weight:normal;line-height:20px;'>
-                                        <span style='font-weight:bold;'>[CLIENTS.COMPANY_NAME]</span>
+                                        <span style='font-weight:bold;'>` +
+    name +
+    `</span>
                                         
                                       </p>
                                       <p  style='text-align:right;color:#999999;font-size:9px;font-weight:normal;line-height:20px;'>
