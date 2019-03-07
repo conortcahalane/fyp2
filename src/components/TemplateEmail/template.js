@@ -293,10 +293,14 @@ exports.templateWithContent = function(content, name, description, email) {
                       </table
               </div>
         
+        <!-- ================== start of content ================= -->
         
          ` +
     content +
     `       
+
+    <!-- =============================== end of content ====================================== -->
+
               <div class="movableContent" style="border: 0px; padding-top: 0px; position: relative;">
               
               </div>
@@ -348,7 +352,7 @@ exports.templateWithContent = function(content, name, description, email) {
     `</span>
                                         
                                       </p>
-                                      <p  style='text-align:right;color:#999999;font-size:9px;font-weight:normal;line-height:20px;'>
+                                      <p  style='text-align:left;color:#999999;font-size:9px;font-weight:normal;line-height:20px;'>
                                         <span style=''>Newsletter created using Up2Date </span>
                                       </p>
                                     </div>
@@ -363,10 +367,7 @@ exports.templateWithContent = function(content, name, description, email) {
               
               <td valign="top" width="16" class="spechide">&nbsp;</td>
               <td valign="top" width="52" align="center"><div class="contentEditableContainer contentTwitterEditable">
-                                    <div class="contentEditable">
                                     
-                                      <a target='_blank' href="#"><img src="images/twitter2.png" width='52' data-customIcon="true" height='52' alt='twitter icon' data-default="placeholder" data-max-width="52"></img></a>
-                                    </div>
                                   </div></td>
             </tr>
           </tbody>
