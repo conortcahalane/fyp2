@@ -11,6 +11,8 @@ export function allNewsHtml(news) {
   return html;
 }
 
+//unused code, could be implemented in the future
+
 // var generateDoubleTable = function(NewsItem1, NewsItem2) {
 //   return (
 //     `

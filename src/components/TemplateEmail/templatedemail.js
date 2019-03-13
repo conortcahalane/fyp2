@@ -98,7 +98,8 @@ class TemplatedEmailPage extends Component {
     );
   }
 }
-
+//newsletter template includes the iframe
+//data is passed into the iframe to be used in the templateWithContent() and allNewsHtml() functions
 const NewsletterTemplate = ({ newsletters }) => (
   <Wrapper>
     <Wrapper>
