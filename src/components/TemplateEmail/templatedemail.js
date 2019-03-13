@@ -104,8 +104,8 @@ const NewsletterTemplate = ({ newsletters }) => (
     <Wrapper>
       <iframe
         id="iframe"
-        width="600"
-        height="1000"
+        width="610"
+        height="1200"
         srcDoc={templateWithContent(
           allNewsHtml(newsletters[newsletters.length - 1].news),
           newsletters[newsletters.length - 1].name,

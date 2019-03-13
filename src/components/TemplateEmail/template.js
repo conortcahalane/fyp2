@@ -61,7 +61,7 @@ exports.templateWithContent = function(content, name, description, email) {
               -webkit-border-radius:3px;
               color:#ffffff;
               font-size:13px;
-              background:#C3CAA9;
+              background:#59caff;
               text-decoration:none;
             }
         
@@ -252,8 +252,8 @@ exports.templateWithContent = function(content, name, description, email) {
         
               </div>
               <div class="movableContent" style="border: 0px; padding-top: 0px; position: relative;">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center" bgcolor='#E4A552'>  
-                        <tr><td height='25' colspan='3'></td></tr>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center" bgcolor='#32b0ff'>  
+                        <tr><td height='40' colspan='3'></td></tr>
         
                         <tr>
                           <td width='25'></td>
@@ -264,19 +264,19 @@ exports.templateWithContent = function(content, name, description, email) {
                                 <td>
                                   <div class="contentEditableContainer contentTextEditable">
                                     <div class="contentEditable" >
-                                      <h1 style='font-size:35px;text-align:center;color:#ffffff;font-weight:normal;margin:0;'>` +
+                                      <h1 style='font-size:42px;text-align:center;color:#ffffff;font-weight:normal;margin:0;'><b>` +
     name +
-    `</h1>
+    `</b></h1>
                                     </div>
                                   </div>
                                 </td>
                               </tr>
-                              <tr><td height='10'></td></tr>
+                              <tr><td height='25'></td></tr>
                               <tr>
                                 <td>
                                   <div class="contentEditableContainer contentTextEditable">
                                     <div class="contentEditable" >
-                                      <p style='text-align:center;font-size:16px;color:#ffffff;margin:0;'>` +
+                                      <p style='text-align:center;font-size:20px;color:#ffffff;margin:0;'>` +
     description +
     `</p>
                                     </div>
@@ -289,7 +289,7 @@ exports.templateWithContent = function(content, name, description, email) {
                           <td width='25'></td>
                         </tr>
         
-                        <tr><td height='25' colspan='3'></td></tr>
+                        <tr><td height='50' colspan='3'></td></tr>
                       </table
               </div>
         
@@ -308,18 +308,18 @@ exports.templateWithContent = function(content, name, description, email) {
               
               <!-- =============================== footer ====================================== -->
               
-              <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
-                          <tr><td height='50'></td></tr>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center" >
+                          <tr><td height='15'></td></tr>
         
-                  <tr><td  style='border-bottom:1px solid #999999;'></td></tr>
+                  <tr bgcolor='#32b0ff'><td  bgcolor='#32b0ff' style='border-bottom:1px solid #999999;'></td></tr>
         
-                  <tr><td height='25'></td></tr>
+                  <tr><td bgcolor='#32b0ff' height='25'></td></tr>
         
-                  <tr>
-                    <td valign='top' align='center'>
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <p style='color:#A8B0B6; font-size:13px;line-height: 16px;'>
+                  <tr bgcolor='#32b0ff'>
+                    <td valign='top' align='center' >
+                      <div class="contentEditableContainer contentTextEditable" >
+                        <div class="contentEditable"  >
+                          <p style='color:#ffffff; font-size:16px;line-height: 16px;'>
                           If you have any queries about this newsletter feel free to contact ` +
     email +
     ` 
@@ -331,7 +331,7 @@ exports.templateWithContent = function(content, name, description, email) {
                       </table>
               </div>
               <div class="movableContent" style="border: 0px; padding-top: 0px; position: relative;">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <table bgcolor='#32b0ff' width="100%" border="0" cellspacing="0" cellpadding="0">
           <tbody>
             <tr>
               <td>&nbsp;</td>
@@ -346,28 +346,28 @@ exports.templateWithContent = function(content, name, description, email) {
             <tr>
               <td valign="top" align="left" class="specbundle2"><div class="contentEditableContainer contentTextEditable">
                                     <div class="contentEditable" align='center'>
-                                      <p  style='text-align:left;color:#999999;font-size:12px;font-weight:normal;line-height:20px;'>
+                                      <p  style='text-align:left;color:#ffffff;font-size:14px;font-weight:normal;line-height:20px;'>
                                         <span style='font-weight:bold;'>` +
     name +
     `</span>
                                         
                                       </p>
-                                      <p  style='text-align:left;color:#999999;font-size:9px;font-weight:normal;line-height:20px;'>
+                                      <p  style='text-align:left;color:#ffffff;font-size:12px;font-weight:normal;line-height:20px;'>
                                         <span style=''>Newsletter created using Up2Date </span>
                                       </p>
                                     </div>
                                   </div></td>
-              <td width='16' class="specbundle2"></td>
-              <td valign="top" width="120" class="specbundle3" align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <td width='16' class="specbundle2"  ></td>
+              <td bgcolor='#32b0ff' valign="top" width="120" class="specbundle3" align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tbody>
             <tr>
-              <td align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+              <td align="center" ><table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
           <tbody>
             <tr>
               
-              <td valign="top" width="16" class="spechide">&nbsp;</td>
-              <td valign="top" width="52" align="center"><div class="contentEditableContainer contentTwitterEditable">
-                                    
+              <td valign="top" width="16" class="spechide"  >&nbsp;</td>
+              <td valign="top" width="52" align="center" ><div class="contentEditableContainer contentTwitterEditable">
+              
                                   </div></td>
             </tr>
           </tbody>
@@ -380,7 +380,7 @@ exports.templateWithContent = function(content, name, description, email) {
           </tbody>
         </table>
         </td>
-              <td valign="top" width="40" class="spechide">&nbsp;</td>
+              <td valign="top" width="40" class="spechide" bgcolor='#32b0ff'>&nbsp;</td>
             </tr>
           </tbody>
         </table>
@@ -399,7 +399,7 @@ exports.templateWithContent = function(content, name, description, email) {
         </td>
             </tr>
             <tr>
-                <td height='55'></td>
+                <td bgcolor='#32b0ff' height='30'></td>
             </tr>
           </tbody>
         </table>

@@ -193,6 +193,7 @@ class CreatorFormBase extends React.Component {
     console.log(this.state);
     alert(`Newsletter Saved`);
     this.props.history.push(ROUTES.TEMPLATEDEMAIL);
+
     event.preventDefault();
   };
 

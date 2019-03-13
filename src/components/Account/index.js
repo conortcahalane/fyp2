@@ -73,8 +73,9 @@ const AccountPage = () => (
         <Wrapper>
           <Title>Account: {authUser.email}</Title>
           <InsideWrapper>
-            <PasswordForgetForm />
-            {/* <PasswordChangeForm /> */}
+            <hr color="#af5a76" width="50%" />
+            <Text>Change your password here:</Text>
+            <PasswordChangeForm />
           </InsideWrapper>
         </Wrapper>
         <Footer>

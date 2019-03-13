@@ -1,45 +1,47 @@
 export function allNewsHtml(news) {
   var html = "";
   for (var i = 0; i < news.length; i++) {
-    if (i + 1 === news.length && news.length % 2 === 0) {
-      html += generateSingleTable(news[i]);
-    } else if (news.length - i >= 2) {
-      html += generateDoubleTable(news[i], news[i + 1]);
-      i++;
-    }
+    // if (i + 1 === news.length && news.length % 2 === 0) {
+    html += generateSingleTable(news[i]);
+    // } else if (news.length - i >= 2) {
+    //   html += generateDoubleTable(news[i], news[i + 1]);
+    //   i++;
+    // }
   }
   return html;
 }
 
-var generateDoubleTable = function(NewsItem1, NewsItem2) {
-  return (
-    `
-    <div class="movableContent" style="border: 0px; padding-top: 0px; position: relative;">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tbody>
-    <tr>
-      <td height='10'></td>
-    </tr>
-    <tr>
-      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tbody>
-    <tr>` +
-    getNewsItem(NewsItem1) +
-    ` <td valign="top" width="10" class="specbundle">&nbsp;</td>` +
-    getNewsItem(NewsItem2) +
-    `</tr>
-    </tbody>
-  </table>
-  </td>
-      </tr>
-    </tbody>
-  </table>
-  
-        </div> `
-  );
-};
+// var generateDoubleTable = function(NewsItem1, NewsItem2) {
+//   return (
+//     `
+//     <div class="movableContent" style="border: 0px; padding-top: 0px; position: relative;">
+//       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+//   <tbody>
+//     <tr>
+//       <td height='10'></td>
+//     </tr>
+//     <tr>
+//       <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+//   <tbody>
+//     <tr>` +
+//     getNewsItem(NewsItem1) +
+//     ` <td valign="top" width="10" class="specbundle">&nbsp;</td>` +
+//     getNewsItem(NewsItem2) +
+//     `</tr>
+//     </tbody>
+//   </table>
+//   </td>
+//       </tr>
+//     </tbody>
+//   </table>
 
-var generateSingleTable = function(NewsItem) {
+//         </div> `
+//   );
+// };
+
+//generates a single table that will get injected into the larger template for the newsletter
+//this table includes functions that will insert the users relevant data into the template
+var generateSingleTable = function(news) {
   return (
     `<div class="movableContent" style="border: 0px; padding-top: 0px; position: relative;">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -50,9 +52,34 @@ var generateSingleTable = function(NewsItem) {
   <tr>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tbody>
-  <tr>` +
-    getNewsItem(NewsItem) +
+  <tr><td bgcolor="#ffffff" width="500" class="specbundle"><table border="0" cellspacing="0" cellpadding="0"  align="center">
+  <tr><td height='15' colspan='3'></td></tr>
+
+  
+
+      <td bgcolor="#ffffff" width="500" class="specbundle"><table border="0" cellspacing="0" cellpadding="0"  align="center">
+      <tr><td height='10' colspan='3'></td></tr>
+
+      <tr>
+        <td width='25'></td>
+        <td valign='top'>
+          <table border="0" cellspacing="0" cellpadding="0"  align="center">
+
+           ` +
+    getNewsHeading(news.heading) +
     `
+                        ` +
+    getNewsBody(news.body) +
+    `
+                        ` +
+    getNewsLink(news.link) +
+    `</table>
+    </td>
+    <td width='25'></td>
+  </tr>
+
+<tr><td height='30' colspan='3'></td></tr>
+</table></td>
     </tr>
     </tbody>
   </table>
@@ -126,6 +153,7 @@ var getNewsItem = function(news) {
   return html;
 };
 
+//injects a html segment including the users heading data into the single table
 var getNewsHeading = function(heading) {
   var html = "";
   if (heading) {
@@ -136,10 +164,11 @@ var getNewsHeading = function(heading) {
           <div class="contentEditableContainer contentTextEditable">
             <div class="contentEditable" >
 <!--  header -->
-` +
+
+              <h1>` +
       heading +
-      `
-              <h2>Group Classes</h2>
+      `</h1>
+      <br>
             </div>
           </div>
         </td>
@@ -149,6 +178,7 @@ var getNewsHeading = function(heading) {
   return html;
 };
 
+//injects a html segment including the users body data into the single table
 var getNewsBody = function(body) {
   var html = "";
   if (body) {
@@ -157,12 +187,12 @@ var getNewsBody = function(body) {
       <tr>
         <td align='left'>
           <div class="contentEditableContainer contentTextEditable">
-            <div class="contentEditable" >
+            <div class="contentEditable" style="">
 <!--  body -->
-` +
+
+              <p ><font color="#002370"><font size="4">` +
       body +
-      `
-              <p >Include a link to your group class schedule. You can also provide a link for people to download a PDF.</p>
+      `</font></font></p>
             </div>
           </div>
         </td>
@@ -172,6 +202,7 @@ var getNewsBody = function(body) {
   return html;
 };
 
+//injects a html segment including the users link data into the single table
 var getNewsLink = function(link) {
   var html = "";
   if (link) {
@@ -182,10 +213,13 @@ var getNewsLink = function(link) {
           <div class="contentEditableContainer contentTextEditable">
             <div class="contentEditable" >
 <!-- link -->
-` +
+<br>
+<br>
+<a href='` +
       link +
-      `
-              <a target='_blank' href='#' class='link2' style='color:#ffffff;'>Link to Schedule</a>
+      `' class='link2' style='color:#ffffff;'>Find out more</a>
+             
+
             </div>
           </div>
         </td>
